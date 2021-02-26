@@ -10,6 +10,7 @@ def add_quote(
     id_quote: int,
     text: str,
     author: str,
+    is_favorite: bool,
 ) -> Quote:
     quote = create_model(
         session,
@@ -17,6 +18,7 @@ def add_quote(
         id=id_quote,
         text=text,
         author=author,
+        is_favorite=is_favorite,
     )
     yield quote
     delete_instance(session, quote)
@@ -29,6 +31,7 @@ def quote1(session: Session) -> Quote:
         id_quote=1,
         text="You have to believe in yourself.",
         author="Sun Tzu",
+        is_favorite=False,
     )
 
 
@@ -39,4 +42,5 @@ def quote2(session: Session) -> Quote:
         id_quote=2,
         text="Wisdom begins in wonder.",
         author="Socrates",
+        is_favorite=False,
     )
